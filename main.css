@@ -20,10 +20,12 @@ body{
     align-items: center;
 }
 
+/* HEADER - LOGO */
+
 .logo img{
-    width: 75px;
-    height: 75px;
-    padding: 0 10px 0 20px;
+    width: 70px;
+    height: 70px;
+    padding: 0 4px 0 30px;
 }
 
 .logo-title{
@@ -36,3 +38,6 @@ body{
     font-family: 'Josefin Slab', serif;
     font-size: 15px;
 }
+
+/* HEADER - SOCIAL */
+
