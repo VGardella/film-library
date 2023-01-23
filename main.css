@@ -83,6 +83,40 @@ hr{
     border: 1px solid #466964;
 }
 
+/* MAIN - CARD */
+
+.card{
+    width: 300px;
+    height: 200px;
+    background-color: #FFFFFF;
+    border-left: 8px solid #ffc831;
+    border-radius: 10px;
+    margin: 0 20px;
+    padding: 25px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.movie-title{
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.movie-data{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(150, 150, 150);
+}
+
+.movie-desc{
+    align-self: flex-start;
+    color: rgb(110, 110, 110);
+    margin-top: 20px;
+}
+
+
 /* FOOTER */
 
 .footer{
