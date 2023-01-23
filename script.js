@@ -7,3 +7,8 @@ function Movie(title, genre, description, director, year) {
     this.director = director;
     this.year = year;
 }
+
+function addMovie(object) {
+    filmLibrary.push(object);
+    alert('Entry added correctly to Library');
+}
