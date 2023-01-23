@@ -12,15 +12,16 @@ body{
     color: #FFFFFF;
     height: 100px;
     display: flex;
+    justify-content: space-between;
 }
+
+/* HEADER - LOGO */
 
 .header .logo{
     width: 300px;
     display: flex;
     align-items: center;
 }
-
-/* HEADER - LOGO */
 
 .logo img{
     width: 70px;
@@ -40,4 +41,17 @@ body{
 }
 
 /* HEADER - SOCIAL */
+
+.social{
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.social img{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
 
