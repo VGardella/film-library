@@ -1,0 +1,16 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    size: 15px;
+    height: 100%;
+    margin: 0;
+}
+
+/* HEADER */
+
+.header{
+    background-color: #579BB1;
+    color: #454545;
+    height: 100px;
+    display: flex;
+}
+
