@@ -9,8 +9,30 @@ body{
 
 .header{
     background-color: #579BB1;
-    color: #454545;
+    color: #FFFFFF;
     height: 100px;
     display: flex;
 }
 
+.header .logo{
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 75px;
+    height: 75px;
+    padding: 0 10px 0 20px;
+}
+
+.logo-title{
+    font-family: 'Hammersmith One', sans-serif;
+    font-size: 30px;
+    margin: 0 0 -5px 0;
+}
+
+.logo-slogan{
+    font-family: 'Josefin Slab', serif;
+    font-size: 15px;
+}
