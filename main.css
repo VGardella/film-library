@@ -118,7 +118,19 @@ hr{
     align-self: flex-start;
     color: rgb(110, 110, 110);
     margin-top: 20px;
+    overflow-y: scroll;
 }
+
+.movie-desc::-webkit-scrollbar{
+    background-color: #FFF;
+    width: 5px;
+}
+
+.movie-desc::-webkit-scrollbar-thumb{
+    background: rgb(150, 150, 150);
+    border-radius: 10px;
+}
+    
 
 .movie-buttons{
     margin-top: auto;
