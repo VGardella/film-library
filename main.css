@@ -3,7 +3,7 @@ body{
     size: 15px;
     height: 100%;
     margin: 0;
-    background-color: #ddf0ec;
+    background-color: #F8F4EA;
 }
 
 
@@ -124,4 +124,7 @@ hr{
     width: 100%;
     background-color: #466964;
     color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
