@@ -163,9 +163,11 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
 
     // Append to board
     if (filmLibrary[i]['seen'] === true) {
+        card.classList.add('seen');
         seenBoard.appendChild(card);
     }
     else if (filmLibrary[i]['seen'] === false) {
+        card.classList.add('unseen');
         unseenBoard.appendChild(card);
     }
 };

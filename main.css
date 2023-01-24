@@ -103,6 +103,14 @@ hr{
     box-shadow: 5px 5px 10px lightgray;
 }
 
+.card.seen{
+    border-left: 8px solid #ffc831;
+}
+
+.card.unseen{
+    border-left: 8px solid #646464;
+}
+
 .movie-title{
     font-size: 20px;
     padding-top: 10px;
@@ -131,7 +139,6 @@ hr{
     border-radius: 10px;
 }
     
-
 .movie-buttons{
     margin-top: auto;
     display: flex;
