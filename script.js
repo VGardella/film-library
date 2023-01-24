@@ -48,11 +48,22 @@ function showMovies() {
         deleteBtn.setAttribute('class', 'btn');
         deleteBtn.setAttribute('id', 'delete');
 
-        // Position elements
+        // Append containers
+        card.appendChild(movieTitle);
+        card.appendChild(movieData);
+        card.appendChild(movieDesc);
+        card.appendChild(movieButtons);
+
+        movieData.appendChild(movieGenre);
+        movieData.appendChild(movieYear);
+
+        movieButtons.appendChild(seenBtn);
+        movieButtons.appendChild(editBtn);
+        movieButtons.appendChild(deleteBtn);
+
 
     }
     
-
 }
 
 
