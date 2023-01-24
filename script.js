@@ -19,7 +19,36 @@ const board = document.querySelector('cards');
 
 function showMovies() {
     for (let i = 0; i < filmLibrary.lenght ; i++) {
+        
+        // Create card
+        let card = document.createElement('div');
+        card.setAttribute('card');
 
+        // Create elements
+        let movieTitle = document.createElement('div');
+        movieTitle.setAttribute('class', 'movie-title');
+        let movieData = document.createElement('div');
+        movieData.setAttribute('class', 'movie-data');
+        let movieGenre = document.createElement('div');
+        movieGenre.setAttribute('class', 'movie-genre');
+        let movieYear = document.createElement('div');
+        movieYear.setAttribute('class', 'movie-year');
+        let movieDesc = document.createElement('div');
+        movieDesc.setAttribute('class', 'movie-desc');
+        let movieButtons = document.createElement('div');
+        movieButtons.setAttribute('class', 'movie-buttons');
+
+        let seenBtn = document.createElement('img');
+        seenBtn.setAttribute('class', 'btn');
+        seenBtn.setAttribute('id', 'seen-unseen');
+        let editBtn = document.createElement('img');
+        editBtn.setAttribute('class', 'btn');
+        editBtn.setAttribute('id', 'edit');
+        let deleteBtn = document.createElement('img');
+        deleteBtn.setAttribute('class', 'btn');
+        deleteBtn.setAttribute('id', 'delete');
+
+        // Position elements
 
     }
     
