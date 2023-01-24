@@ -135,12 +135,15 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     let seenBtn = document.createElement('img');
     seenBtn.setAttribute('class', 'btn');
     seenBtn.setAttribute('id', 'seen-unseen');
+    seenBtn.src = 'static/seen.png'
     let editBtn = document.createElement('img');
     editBtn.setAttribute('class', 'btn');
     editBtn.setAttribute('id', 'edit');
+    editBtn.src = 'static/edit.png';
     let deleteBtn = document.createElement('img');
     deleteBtn.setAttribute('class', 'btn');
     deleteBtn.setAttribute('id', 'delete');
+    deleteBtn.src = 'static/delete.png';
 
     // Add content
     movieTitle.textContent = `${filmLibrary[i]['title']}`;
