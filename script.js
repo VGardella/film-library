@@ -13,6 +13,25 @@ function addMovie(object) {
   filmLibrary.push(object);
 }
 
+// Create cards
+
+const board = document.querySelector('cards');
+
+function showMovies() {
+    for (let i = 0; i < filmLibrary.lenght ; i++) {
+
+
+    }
+    
+
+}
+
+
+
+
+
+
+
 // Entries
 
 const movie1 = new Movie(
@@ -115,37 +134,3 @@ const movie9 = new Movie(
 );
 
 addMovie(movie9);
-
-const movie10 = new Movie(
-    "C.H.U.D",
-    "Science Fiction, Horror",
-    "A New York City police officer and a homeless shelter manager team up to investigate a series of disappearances, and discover that the missing people have been killed by humanoid monsters that live in the sewers",
-    "Douglas Cheek",
-    "1984",
-    false
-);
-
-addMovie(movie10);
-
-
-const movie11 = new Movie(
-    "Piranha",
-    "Comedy, Horror",
-    "It tells the story of a river being infested by lethal, genetically altered piranha, threatening the lives of the local inhabitants and the visitors to a nearby summer resort",
-    "Joe Dante",
-    "1978",
-    false
-);
-
-addMovie(movie11);
-
-const movie12 = new Movie(
-    "Christine",
-    "Horror",
-    "The movie follows the changes in the lives of Arnie Cunningham, his friends, his family, and his teenage enemies after he buys a classic red and white 1958 Plymouth Fury that seems to have a mind of its own",
-    "John Carpenter",
-    "1983",
-    false
-);
-
-addMovie(movie12);
