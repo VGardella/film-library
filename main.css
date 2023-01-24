@@ -116,11 +116,11 @@ hr{
     margin-top: 20px;
 }
 
-.buttons{
+.movie-buttons{
     margin-top: auto;
     display: flex;
     justify-content: end;
-    gap: 10px;
+    gap: 15px;
 }
 
 .btn{
