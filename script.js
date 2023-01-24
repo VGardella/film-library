@@ -133,16 +133,16 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieButtons.setAttribute('class', 'movie-buttons');
 
     let seenBtn = document.createElement('img');
-    seenBtn.setAttribute('class', 'btn');
-    seenBtn.setAttribute('id', 'seen-unseen');
+    seenBtn.classList.add('btn', 'seen');
     seenBtn.src = 'static/seen.png'
+    let unseenBtn = document.createElement('img');
+    unseenBtn.classList.add('btn', 'unseen');
+    unseenBtn.src = 'static/unseen.png'
     let editBtn = document.createElement('img');
-    editBtn.setAttribute('class', 'btn');
-    editBtn.setAttribute('id', 'edit');
+    editBtn.classList.add('btn', 'edit');
     editBtn.src = 'static/edit.png';
     let deleteBtn = document.createElement('img');
-    deleteBtn.setAttribute('class', 'btn');
-    deleteBtn.setAttribute('id', 'delete');
+    deleteBtn.classList.add('btn', 'delete');
     deleteBtn.src = 'static/delete.png';
 
     // Add content
