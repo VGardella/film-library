@@ -1,17 +1,20 @@
 let filmLibrary = [];
-const board = document.getElementById('board');
-
-function Movie(title, genre, description, year, seen) {
-  this.title = title;
-  this.genre = genre;
-  this.description = description;
-  this.year = year;
-  this.seen = seen;
-}
+const seenBoard = document.getElementById('seen-board');
+const unseenBoard = document.getElementById('unseen-board');
 
 function addMovie(object) {
   filmLibrary.push(object);
 }
+
+//  Constructor
+
+function Movie(title, genre, description, year, seen) {
+    this.title = title;
+    this.genre = genre;
+    this.description = description;
+    this.year = year;
+    this.seen = seen;
+  }
 
 // Entries
 
@@ -145,10 +148,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieYear.textContent = `${filmLibrary[i]['year']}`;
     movieDesc.textContent = `${filmLibrary[i]['description']}`;
 
-    
     // Append containers
-    board.appendChild(card);
-    
     card.appendChild(movieTitle);
     card.appendChild(movieData);
     card.appendChild(movieDesc);
@@ -160,5 +160,13 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieButtons.appendChild(seenBtn);
     movieButtons.appendChild(editBtn);
     movieButtons.appendChild(deleteBtn);
+
+    // Append to board
+    if (filmLibrary[i]['seen'] === true) {
+        seenBoard.appendChild(card);
+    }
+    else if (filmLibrary[i]['seen'] === false) {
+        unseenBoard.appendChild(card);
+    }
 };
 
