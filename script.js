@@ -168,7 +168,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     if (filmLibrary[i]['seen'] === true) {
         card.classList.add('seen');
 
-        seenBtn.src = 'static/seen.png';
+        seenBtn.src = 'static/unseen.png';
         seenBtn.classList.add('btn', 'seen-btn', 'seen');
         movieButtons.appendChild(seenBtn);
         
@@ -177,7 +177,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     else if (filmLibrary[i]['seen'] === false) {
         card.classList.add('unseen');
         
-        seenBtn.src = 'static/unseen.png';
+        seenBtn.src = 'static/seen.png';
         seenBtn.classList.add('btn', 'seen-btn', 'unseen');
         movieButtons.appendChild(seenBtn);
         
