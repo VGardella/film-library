@@ -199,14 +199,16 @@ let toggleSeen = function(element, class0, class1) {
 
 seenButtons.forEach((button) => {
     button.addEventListener('click', function() {
-        let movie = document.getElementById(this.closest('.card').id);
+        let index = this.closest('.card').id;
+        let movie = document.getElementById(index);
         toggleSeen(movie, 'seen', 'unseen');
     })
 })
 
 unseenButtons.forEach((button) => {
     button.addEventListener('click', function() {
-        let movie = document.getElementById(this.closest('.card').id);
+        let index = this.closest('.card').id;
+        let movie = document.getElementById(index);
         toggleSeen(movie, 'seen', 'unseen');
     })
 })
