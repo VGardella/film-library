@@ -110,6 +110,34 @@ hr{
     border: 1px solid #466964;
 }
 
+/* MAIN - ADD MOVIE FORM */
+
+.form-container{
+    width: 40%;
+    margin: 40px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.form-container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-title{
+    padding: 10px 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    gap: 10px;
+}
+
+
 /* MAIN - CARD */
 
 .card{
