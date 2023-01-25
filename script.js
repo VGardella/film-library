@@ -134,11 +134,11 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieButtons.setAttribute('class', 'movie-buttons');
 
     let seenBtn = document.createElement('img');
-    seenBtn.classList.add('btn', 'seen');
-    seenBtn.src = 'static/seen.png'
-    let unseenBtn = document.createElement('img');
-    unseenBtn.classList.add('btn', 'unseen');
-    unseenBtn.src = 'static/unseen.png'
+    // seenBtn.classList.add('btn', 'seen');
+    // seenBtn.src = 'static/seen.png';
+    // let unseenBtn = document.createElement('img');
+    // unseenBtn.classList.add('btn', 'unseen');
+    // unseenBtn.src = 'static/unseen.png';
     let editBtn = document.createElement('img');
     editBtn.classList.add('btn', 'edit');
     editBtn.src = 'static/edit.png';
@@ -167,13 +167,21 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     // Append to board
     if (filmLibrary[i]['seen'] === true) {
         card.classList.add('seen');
+
+        seenBtn.src = 'static/seen.png';
+        seenBtn.classList.add('btn', 'seen');
+        movieButtons.appendChild(seenBtn);
+        
         seenBoard.appendChild(card);
-        movieButtons.appendChild(unseenBtn);
     }
     else if (filmLibrary[i]['seen'] === false) {
         card.classList.add('unseen');
-        unseenBoard.appendChild(card);
+        
+        seenBtn.src = 'static/unseen.png';
+        seenBtn.classList.add('btn', 'unseen');
         movieButtons.appendChild(seenBtn);
+        
+        unseenBoard.appendChild(card);
     }
 };
 
@@ -193,6 +201,5 @@ seenButtons.forEach((button) => {
     button.addEventListener('click', function() {
         let movie = document.getElementById(this.closest('.card').id);
         toggleSeen(movie, 'seen', 'unseen');
-        console.log(movie);
     })
 })
