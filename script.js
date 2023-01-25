@@ -117,6 +117,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     // Create card
     let card = document.createElement('div');
     card.setAttribute('class', 'card');
+    card.setAttribute('id', `${i}`);
 
     // Create elements
     let movieTitle = document.createElement('div');
@@ -176,3 +177,22 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     }
 };
 
+// Event Listeners
+
+const seenButtons = document.querySelectorAll('.btn.seen');
+const unseenButtons = document.querySelectorAll('.btn.unseen');
+const editButtons = document.querySelectorAll('.btn.edit');
+const deleteButtons = document.querySelectorAll('.btn.delete');
+
+let toggleSeen = function(element, class0, class1) {
+    element.classList.toggle(class0);
+    element.classList.toggle(class1);
+}
+
+seenButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+        let movie = document.getElementById(this.closest('.card').id);
+        toggleSeen(movie, 'seen', 'unseen');
+        console.log(movie);
+    })
+})
