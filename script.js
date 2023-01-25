@@ -18,7 +18,7 @@ function Movie(title, genre, description, year, seen) {
 
 // Entries
 
-const movie1 = new Movie(
+let movie1 = new Movie(
     "The Shining",
     "Psycological Horror",
     "Based on based on Stephen King's 1977 novel of the same name; an aspiring writer and recovering alcoholic accepts a position as the off-season caretaker of the isolated historic Overlook Hotel",
@@ -28,7 +28,7 @@ const movie1 = new Movie(
 
 addMovie(movie1);
 
-const movie2 = new Movie(
+let movie2 = new Movie(
     "Big Trouble in Little China",
     "Fantasy, Action, Comedy",
     "Truck driver Jack Burton helps his friend Wang Chi rescue Wang's green-eyed fiancée from bandits in San Francisco's Chinatown",
@@ -38,7 +38,7 @@ const movie2 = new Movie(
 
 addMovie(movie2);
 
-const movie3 = new Movie(
+let movie3 = new Movie(
     "The Evil Dead",
     "Supernatural Horror",
     "Five college students vacationing in an isolated cabin find an audio tape that, when played, releases a legion of demons and spirits",
@@ -48,7 +48,7 @@ const movie3 = new Movie(
 
 addMovie(movie3);
 
-const movie4 = new Movie(
+let movie4 = new Movie(
     "Demolition Man",
     "Science Fiction, Action",
     "A risk-taking police officer cryogenically frozen is awaken to help capture a extremely dangerous crime lord",
@@ -58,7 +58,7 @@ const movie4 = new Movie(
 
 addMovie(movie4);
 
-const movie5 = new Movie(
+let movie5 = new Movie(
     "Dredd",
     "Science Fiction, Action",
     "Judge Dredd, a law enforcer, and his apprentice partner, Judge Anderson, are forced to bring order to a 200-storey high-rise block of apartments and deal with its resident drug lord",
@@ -68,7 +68,7 @@ const movie5 = new Movie(
 
 addMovie(movie5);
 
-const movie6 = new Movie(
+let movie6 = new Movie(
     "The Running Man",
     "Action",
     "An man wrongly accused of a crime must participate in a television show where convicted criminal must escape death at the hands of professional killers",
@@ -80,7 +80,7 @@ addMovie(movie6);
   
 // To be seen
 
-const movie7 = new Movie(
+let movie7 = new Movie(
     "Blade Runner",
     "Science Fiction",
     "When a fugitive group of syntetic humans, or 'replicants', escapes to Earth, burnt-out cop Rick Deckard reluctantly agrees to hunt them down",
@@ -90,7 +90,7 @@ const movie7 = new Movie(
 
 addMovie(movie7);
 
-const movie8 = new Movie(
+let movie8 = new Movie(
     "Tron",
     "Science Fiction, Action, Adventure",
     "A computer programmer and video game developer is transported inside the software world, where he interacts with programs in his attempt to escape",
@@ -100,7 +100,7 @@ const movie8 = new Movie(
 
 addMovie(movie8);
 
-const movie9 = new Movie(
+let movie9 = new Movie(
     "Jaws",
     "Thriller",
     "A police chief, a marine biologist and a professional shark hunter persue a man-eating great white shark that attack beachgoers at a summer resort town",
@@ -200,8 +200,16 @@ seenButtons.forEach((button) => {
     button.addEventListener('click', function() {
         let index = this.closest('.card').id;
         let movie = document.getElementById(index);
-        toggleSeen(movie, 'seen', 'unseen');
+        if (filmLibrary[index]['seen'] === true) {
+            filmLibrary[index]['seen'] = false;
+            toggleSeen(movie, 'seen', 'unseen');
+        }
+        else if (filmLibrary[index]['seen'] === false) {
+            filmLibrary[index]['seen'] = true;
+            toggleSeen(movie, 'seen', 'unseen');
+        }
         
         console.log(movie.classList);
+        console.log(filmLibrary[index]['seen'])
     })
 })
