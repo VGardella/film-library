@@ -64,9 +64,32 @@ body{
     flex-direction: column;
 }
 
+.title-container{
+    display: flex;
+    justify-content: space-between;
+}
+
 .title{
     font-size: 25px;
     padding: 20px 30px;
+}
+
+.movie-button{
+    margin: 20px 30px;
+    width: 100px;
+    height: 40px;
+    background-color: #466964;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Hammersmith One', sans-serif;
+    box-shadow: 5px 5px 10px lightgray;
+}
+
+.movie-button:hover{
+    cursor: pointer;
+    background-color: #2f4642;
+    color: #e2e2e2;
 }
 
 .subtitle{
@@ -150,6 +173,7 @@ hr{
     height: 25px;
     cursor: pointer;
 }
+
 
 /* FOOTER */
 
