@@ -190,6 +190,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
 const seenButtons = document.querySelectorAll('.seen-btn');
 const editButtons = document.querySelectorAll('.btn.edit');
 const deleteButtons = document.querySelectorAll('.btn.delete');
+const cards = document.querySelectorAll('.card');
 
 let toggleSeen = function(element, class0, class1) {
     element.classList.toggle(class0);
@@ -212,6 +213,9 @@ seenButtons.forEach((button) => {
             button.src = 'static/unseen.png';
             seenBoard.appendChild(movie);
         }
+        console.log(filmLibrary[index]['title'])
+        console.log(index);
+        console.log(filmLibrary[index]['seen'])
     })
 })
 
@@ -221,6 +225,9 @@ deleteButtons.forEach((button) => {
         let movie = document.getElementById(index);
         let board = this.closest('.cards');
         filmLibrary.splice(index, 1);
+        for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
+            cards[i+1].setAttribute('id', `${Object.keys(filmLibrary)[i]}`);
+        };
         board.removeChild(movie);
     })
 })
