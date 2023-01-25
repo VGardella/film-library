@@ -46,7 +46,32 @@
       <div class="main">
         <div class="title-container">
           <div class="title">My Movies</div>
-          <button type="button" class="movie-button">Add Movie</div>
+          <button type="button" class="movie-button" onclick="addMovieForm()">Add Movie</div>
+
+            <div class="form-container" id="movieForm">
+              <form action="" method="POST">
+                <h2>Add new movie:</h2>
+
+                <label for="movie-name">Name</label>
+                <input type="text" placeholder="Enter movie name" name="movie-name" required>
+                
+                <label for="movie-genre">Genre</label>
+                <input type="text" placeholder="Enter movie genre" name="movie-genre" required>
+                
+                <label for="movie-desc">Description</label>
+                <input type="text" placeholder="Enter a short description" name="movie-desc">
+
+                <label for="movie-year">Year</label>
+                <input type="number" placeholder="Enter release year" name="movie-year" required>
+                
+                <label for="movie-seen">Have you seen this movie?</label>
+                <input type="checkbox" name="movie-seen" required> Yes
+
+                <button type="submit" class="form-btn save">Save</button>
+                <button type="button" class="form-button cancel">Cancel</button>
+              </form>
+            </div>
+
         </div>
         <div class="cards-container">
           <div class="subtitle">Already seen:</div>
