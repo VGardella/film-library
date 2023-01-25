@@ -160,7 +160,6 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieData.appendChild(movieGenre);
     movieData.appendChild(movieYear);
 
-    movieButtons.appendChild(seenBtn);
     movieButtons.appendChild(editBtn);
     movieButtons.appendChild(deleteBtn);
 
@@ -168,10 +167,12 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     if (filmLibrary[i]['seen'] === true) {
         card.classList.add('seen');
         seenBoard.appendChild(card);
+        movieButtons.appendChild(unseenBtn);
     }
     else if (filmLibrary[i]['seen'] === false) {
         card.classList.add('unseen');
         unseenBoard.appendChild(card);
+        movieButtons.appendChild(seenBtn);
     }
 };
 
