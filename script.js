@@ -212,8 +212,15 @@ seenButtons.forEach((button) => {
             button.src = 'static/unseen.png';
             seenBoard.appendChild(movie);
         }
-        
-        console.log(movie.classList);
-        console.log(filmLibrary[index]['seen'])
+    })
+})
+
+deleteButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+        let index = this.closest('.card').id;
+        let movie = document.getElementById(index);
+        let board = this.closest('.cards');
+        filmLibrary.splice(index, 1);
+        board.removeChild(movie);
     })
 })
