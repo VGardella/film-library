@@ -169,7 +169,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
         card.classList.add('seen');
 
         seenBtn.src = 'static/seen.png';
-        seenBtn.classList.add('btn', 'seen');
+        seenBtn.classList.add('btn', 'seen-btn', 'seen');
         movieButtons.appendChild(seenBtn);
         
         seenBoard.appendChild(card);
@@ -178,7 +178,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
         card.classList.add('unseen');
         
         seenBtn.src = 'static/unseen.png';
-        seenBtn.classList.add('btn', 'unseen');
+        seenBtn.classList.add('btn', 'seen-btn', 'unseen');
         movieButtons.appendChild(seenBtn);
         
         unseenBoard.appendChild(card);
@@ -187,8 +187,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
 
 // Event Listeners
 
-const seenButtons = document.querySelectorAll('.btn.seen');
-const unseenButtons = document.querySelectorAll('.btn.unseen');
+const seenButtons = document.querySelectorAll('.seen-btn');
 const editButtons = document.querySelectorAll('.btn.edit');
 const deleteButtons = document.querySelectorAll('.btn.delete');
 
@@ -202,13 +201,7 @@ seenButtons.forEach((button) => {
         let index = this.closest('.card').id;
         let movie = document.getElementById(index);
         toggleSeen(movie, 'seen', 'unseen');
-    })
-})
-
-unseenButtons.forEach((button) => {
-    button.addEventListener('click', function() {
-        let index = this.closest('.card').id;
-        let movie = document.getElementById(index);
-        toggleSeen(movie, 'seen', 'unseen');
+        
+        console.log(movie.classList);
     })
 })
