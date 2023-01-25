@@ -204,11 +204,13 @@ seenButtons.forEach((button) => {
             filmLibrary[index]['seen'] = false;
             toggleSeen(movie, 'seen', 'unseen');
             button.src = 'static/seen.png';
+            unseenBoard.appendChild(movie);
         }
         else if (filmLibrary[index]['seen'] === false) {
             filmLibrary[index]['seen'] = true;
             toggleSeen(movie, 'seen', 'unseen');
             button.src = 'static/unseen.png';
+            seenBoard.appendChild(movie);
         }
         
         console.log(movie.classList);
