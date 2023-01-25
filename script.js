@@ -203,10 +203,12 @@ seenButtons.forEach((button) => {
         if (filmLibrary[index]['seen'] === true) {
             filmLibrary[index]['seen'] = false;
             toggleSeen(movie, 'seen', 'unseen');
+            button.src = 'static/seen.png';
         }
         else if (filmLibrary[index]['seen'] === false) {
             filmLibrary[index]['seen'] = true;
             toggleSeen(movie, 'seen', 'unseen');
+            button.src = 'static/unseen.png';
         }
         
         console.log(movie.classList);
