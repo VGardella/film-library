@@ -231,3 +231,17 @@ deleteButtons.forEach((button) => {
         board.removeChild(movie);
     })
 })
+
+// Define modal window
+
+const modal = document.getElementById('movieForm');
+const openBtn = document.getElementById('open-form');
+const closeBtn = document.getElementById('close-btn');
+
+openBtn.onclick = function() {
+    modal.style.display = 'block';
+}
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
