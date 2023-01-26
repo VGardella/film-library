@@ -86,7 +86,8 @@ body{
     box-shadow: 5px 5px 10px lightgray;
 }
 
-.movie-button:hover{
+.movie-button:hover,
+.form-buttons button:hover{
     cursor: pointer;
     background-color: #2f4642;
     color: #e2e2e2;
@@ -178,6 +179,23 @@ input::-webkit-inner-spin-button {
 #unseen-radio{
     margin: 0 10px;
     accent-color: #466964;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    gap: 50px
+}
+
+.form-buttons button{
+    height: 40px;
+    width: 40%;
+    background-color: #466964;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Hammersmith One', sans-serif;
 }
 
 /* MAIN - CARD */
