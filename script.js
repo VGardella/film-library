@@ -185,12 +185,23 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     }
 };
 
+function properCase(str) {
+    let word = str.split(', ');
+    let correctWord = []
+    for (let i = 0; i < word.length; i++) {
+        correctWord[i] = word[i].charAt(0).toUpperCase() + word[i].substring(1).toLowerCase();
+    };
+    return correctWord.join(', ');
+}
+
 // Event Listeners
 
 const seenButtons = document.querySelectorAll('.seen-btn');
 const editButtons = document.querySelectorAll('.btn.edit');
 const deleteButtons = document.querySelectorAll('.btn.delete');
 const cards = document.querySelectorAll('.card');
+const saveMovie = document.getElementById('save-btn');
+const inputList = document.querySelectorAll('input');
 
 let toggleSeen = function(element, class0, class1) {
     element.classList.toggle(class0);
