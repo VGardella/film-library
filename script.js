@@ -4,6 +4,7 @@ const unseenBoard = document.getElementById('unseen-board');
 
 function addMovie(object) {
   filmLibrary.push(object);
+  
 }
 
 //  Constructor
@@ -194,13 +195,26 @@ function properCase(str) {
     return correctWord.join(', ');
 }
 
+function addMovieToList(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const movieEntries = Object.values(Object.fromEntries(formData));
+    let newMovie = new Movie();
+    Object.keys(newMovie).forEach((element, index) => {
+        newMovie[element] = movieEntries[index]});
+    addMovie(newMovie);
+
+    
+}
+
+
 // Event Listeners
 
 const seenButtons = document.querySelectorAll('.seen-btn');
 const editButtons = document.querySelectorAll('.btn.edit');
 const deleteButtons = document.querySelectorAll('.btn.delete');
 const cards = document.querySelectorAll('.card');
-const saveMovie = document.getElementById('save-btn');
+const saveMovie = document.getElementById('form');
 const inputList = document.querySelectorAll('input');
 
 let toggleSeen = function(element, class0, class1) {
@@ -242,6 +256,9 @@ deleteButtons.forEach((button) => {
         board.removeChild(movie);
     })
 })
+
+
+saveMovie.addEventListener('submit', addMovieToList);
 
 // Define modal window
 
