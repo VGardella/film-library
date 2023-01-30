@@ -249,10 +249,11 @@ seenButtons.forEach((button) => {
 
 deleteButtons.forEach((button) => {
     button.addEventListener('click', function() {
-        let index = this.closest('.card').id;
-        let movie = document.getElementById(index);
+        let id = Number(this.closest('.card').id);
+        let movie = document.getElementById(id);
+        let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
         let board = this.closest('.cards');
-        filmLibrary.splice(index, 1);
+        filmLibrary.splice(entry, 1);
         board.removeChild(movie);
     })
 })
