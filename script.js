@@ -192,15 +192,6 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     }
 };
 
-function properCase(str) {
-    let word = str.split(', ');
-    let correctWord = []
-    for (let i = 0; i < word.length; i++) {
-        correctWord[i] = word[i].charAt(0).toUpperCase() + word[i].substring(1).toLowerCase();
-    };
-    return correctWord.join(', ');
-}
-
 function addMovieToList(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -285,12 +276,12 @@ function addMovieToList(event) {
 
 // Event Listeners
 
-const seenButtons = document.querySelectorAll('.seen-btn');
-const editButtons = document.querySelectorAll('.btn.edit');
-const deleteButtons = document.querySelectorAll('.btn.delete');
-const cards = document.querySelectorAll('.card');
-const saveMovie = document.getElementById('form');
-const inputList = document.querySelectorAll('input');
+let seenButtons = document.querySelectorAll('.seen-btn');
+let editButtons = document.querySelectorAll('.btn.edit');
+let deleteButtons = document.querySelectorAll('.btn.delete');
+let cards = document.querySelectorAll('.card');
+let saveMovie = document.getElementById('form');
+let inputList = document.querySelectorAll('input');
 
 let toggleSeen = function(element, class0, class1) {
     element.classList.toggle(class0);
