@@ -25,7 +25,7 @@ let movie1 = new Movie(
     "Psycological Horror",
     "Based on based on Stephen King's 1977 novel of the same name; an aspiring writer and recovering alcoholic accepts a position as the off-season caretaker of the isolated historic Overlook Hotel",
     "1980",
-    true,
+    "true",
     1
 );
 
@@ -36,7 +36,7 @@ let movie2 = new Movie(
     "Fantasy, Action, Comedy",
     "Truck driver Jack Burton helps his friend Wang Chi rescue Wang's green-eyed fiancée from bandits in San Francisco's Chinatown",
     "1986",
-    true,
+    "true",
     2
 );
 
@@ -47,7 +47,7 @@ let movie3 = new Movie(
     "Supernatural Horror",
     "Five college students vacationing in an isolated cabin find an audio tape that, when played, releases a legion of demons and spirits",
     "1981",
-    true,
+    "true",
     3
 );
 
@@ -58,7 +58,7 @@ let movie4 = new Movie(
     "Science Fiction, Action",
     "A risk-taking police officer cryogenically frozen is awaken to help capture a extremely dangerous crime lord",
     "1993",
-    true,
+    "true",
     4
 );
 
@@ -69,7 +69,7 @@ let movie5 = new Movie(
     "Science Fiction, Action",
     "Judge Dredd, a law enforcer, and his apprentice partner, Judge Anderson, are forced to bring order to a 200-storey high-rise block of apartments and deal with its resident drug lord",
     "2012",
-    true,
+    "true",
     5
 );
 
@@ -80,7 +80,7 @@ let movie6 = new Movie(
     "Action",
     "An man wrongly accused of a crime must participate in a television show where convicted criminal must escape death at the hands of professional killers",
     "1987",
-    true,
+    "true",
     6
 );
 
@@ -93,7 +93,7 @@ let movie7 = new Movie(
     "Science Fiction",
     "When a fugitive group of syntetic humans, or 'replicants', escapes to Earth, burnt-out cop Rick Deckard reluctantly agrees to hunt them down",
     "1982",
-    false,
+    "false",
     7
 );
 
@@ -104,7 +104,7 @@ let movie8 = new Movie(
     "Science Fiction, Action, Adventure",
     "A computer programmer and video game developer is transported inside the software world, where he interacts with programs in his attempt to escape",
     "1982",
-    false,
+    "false",
     8
 );
 
@@ -115,7 +115,7 @@ let movie9 = new Movie(
     "Thriller",
     "A police chief, a marine biologist and a professional shark hunter persue a man-eating great white shark that attack beachgoers at a summer resort town",
     "1975",
-    false,
+    "false",
     9
 );
 
@@ -172,7 +172,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieButtons.appendChild(deleteBtn);
 
     // Append to board
-    if (filmLibrary[i]['seen'] === true) {
+    if (filmLibrary[i]['seen'] === 'true') {
         card.classList.add('seen');
 
         seenBtn.src = 'static/unseen.png';
@@ -181,7 +181,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
         
         seenBoard.appendChild(card);
     }
-    else if (filmLibrary[i]['seen'] === false) {
+    else if (filmLibrary[i]['seen'] === 'false') {
         card.classList.add('unseen');
         
         seenBtn.src = 'static/seen.png';
@@ -207,14 +207,80 @@ function addMovieToList(event) {
     let movieEntries = Object.values(Object.fromEntries(formData));
     let values = filmLibrary.map(object => object['id']);
     movieEntries[5] = Number(values.slice(-1)) + 1;
-
+    
     let newMovie = new Movie();
     Object.keys(newMovie).forEach((element, index) => {
         newMovie[element] = movieEntries[index]});
+    
     addMovie(newMovie);
+    alert('Movie entry added correctly!')
 
+    // Create card
+    let card = document.createElement('div');
+    card.setAttribute('class', 'card');
+    card.setAttribute('id', `${newMovie['id']}`)
 
-}
+    // Create elements
+    let movieTitle = document.createElement('div');
+    movieTitle.setAttribute('class', 'movie-title');
+    let movieData = document.createElement('div');
+    movieData.setAttribute('class', 'movie-data');
+    let movieGenre = document.createElement('div');
+    movieGenre.setAttribute('class', 'movie-genre');
+    let movieYear = document.createElement('div');
+    movieYear.setAttribute('class', 'movie-year');
+    let movieDesc = document.createElement('div');
+    movieDesc.setAttribute('class', 'movie-desc');
+    let movieButtons = document.createElement('div');
+    movieButtons.setAttribute('class', 'movie-buttons');
+
+    let seenBtn = document.createElement('img');
+
+    let editBtn = document.createElement('img');
+    editBtn.classList.add('btn', 'edit');
+    editBtn.src = 'static/edit.png';
+    let deleteBtn = document.createElement('img');
+    deleteBtn.classList.add('btn', 'delete');
+    deleteBtn.src = 'static/delete.png';
+
+    // Add content
+    movieTitle.textContent = `${newMovie['title']}`;
+    movieGenre.textContent = `${newMovie['genre']}`;
+    movieYear.textContent = `${newMovie['year']}`;
+    movieDesc.textContent = `${newMovie['description']}`;
+
+    // Append containers
+    card.appendChild(movieTitle);
+    card.appendChild(movieData);
+    card.appendChild(movieDesc);
+    card.appendChild(movieButtons);
+
+    movieData.appendChild(movieGenre);
+    movieData.appendChild(movieYear);
+
+    movieButtons.appendChild(editBtn);
+    movieButtons.appendChild(deleteBtn);
+
+    // Append to board
+    if (newMovie['seen'] === 'true') {
+        card.classList.add('seen');
+
+        seenBtn.src = 'static/unseen.png';
+        seenBtn.classList.add('btn', 'seen-btn', 'seen');
+        movieButtons.appendChild(seenBtn);
+        
+        seenBoard.appendChild(card);
+    }
+    else if (newMovie['seen'] === 'false') {
+        card.classList.add('unseen');
+        
+        seenBtn.src = 'static/seen.png';
+        seenBtn.classList.add('btn', 'seen-btn', 'unseen');
+        movieButtons.appendChild(seenBtn);
+        
+        unseenBoard.appendChild(card);
+    }
+};
 
 
 // Event Listeners
