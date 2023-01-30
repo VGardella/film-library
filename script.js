@@ -204,11 +204,15 @@ function properCase(str) {
 function addMovieToList(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const movieEntries = Object.values(Object.fromEntries(formData));
+    let movieEntries = Object.values(Object.fromEntries(formData));
+    let values = filmLibrary.map(object => object['id']);
+    movieEntries[5] = Number(values.slice(-1)) + 1;
+
     let newMovie = new Movie();
     Object.keys(newMovie).forEach((element, index) => {
         newMovie[element] = movieEntries[index]});
     addMovie(newMovie);
+
 
 }
 
