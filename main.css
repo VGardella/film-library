@@ -115,13 +115,28 @@ hr{
 
 .form-container{
     width: 40%;
+    height: 770px;
     margin: 40px;
     border: 1px solid lightgray;
     border-radius: 10px;
     font-size: 19px;
+    background-color: #F8F4EA;
+    box-shadow: 0 5px 10px gray;
 }
 
-.form-container form{
+.modal{
+    /* Make it a modal */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.form-container .form{
     display: flex;
     flex-direction: column;
 }
