@@ -3,18 +3,19 @@ const seenBoard = document.getElementById('seen-board');
 const unseenBoard = document.getElementById('unseen-board');
 
 function addMovie(object) {
-  filmLibrary.push(object);
-  
+    filmLibrary.push(object);
+
 }
 
 //  Constructor
 
-function Movie(title, genre, description, year, seen) {
+function Movie(title, genre, description, year, seen, id) {
     this.title = title;
     this.genre = genre;
     this.description = description;
     this.year = year;
     this.seen = seen;
+    this.id = id;
   }
 
 // Entries
@@ -24,7 +25,8 @@ let movie1 = new Movie(
     "Psycological Horror",
     "Based on based on Stephen King's 1977 novel of the same name; an aspiring writer and recovering alcoholic accepts a position as the off-season caretaker of the isolated historic Overlook Hotel",
     "1980",
-    true
+    true,
+    1
 );
 
 addMovie(movie1);
@@ -34,7 +36,8 @@ let movie2 = new Movie(
     "Fantasy, Action, Comedy",
     "Truck driver Jack Burton helps his friend Wang Chi rescue Wang's green-eyed fiancée from bandits in San Francisco's Chinatown",
     "1986",
-    true
+    true,
+    2
 );
 
 addMovie(movie2);
@@ -44,7 +47,8 @@ let movie3 = new Movie(
     "Supernatural Horror",
     "Five college students vacationing in an isolated cabin find an audio tape that, when played, releases a legion of demons and spirits",
     "1981",
-    true
+    true,
+    3
 );
 
 addMovie(movie3);
@@ -54,7 +58,8 @@ let movie4 = new Movie(
     "Science Fiction, Action",
     "A risk-taking police officer cryogenically frozen is awaken to help capture a extremely dangerous crime lord",
     "1993",
-    true
+    true,
+    4
 );
 
 addMovie(movie4);
@@ -64,7 +69,8 @@ let movie5 = new Movie(
     "Science Fiction, Action",
     "Judge Dredd, a law enforcer, and his apprentice partner, Judge Anderson, are forced to bring order to a 200-storey high-rise block of apartments and deal with its resident drug lord",
     "2012",
-    true
+    true,
+    5
 );
 
 addMovie(movie5);
@@ -74,7 +80,8 @@ let movie6 = new Movie(
     "Action",
     "An man wrongly accused of a crime must participate in a television show where convicted criminal must escape death at the hands of professional killers",
     "1987",
-    true
+    true,
+    6
 );
 
 addMovie(movie6);
@@ -86,7 +93,8 @@ let movie7 = new Movie(
     "Science Fiction",
     "When a fugitive group of syntetic humans, or 'replicants', escapes to Earth, burnt-out cop Rick Deckard reluctantly agrees to hunt them down",
     "1982",
-    false
+    false,
+    7
 );
 
 addMovie(movie7);
@@ -96,7 +104,8 @@ let movie8 = new Movie(
     "Science Fiction, Action, Adventure",
     "A computer programmer and video game developer is transported inside the software world, where he interacts with programs in his attempt to escape",
     "1982",
-    false
+    false,
+    8
 );
 
 addMovie(movie8);
@@ -106,7 +115,8 @@ let movie9 = new Movie(
     "Thriller",
     "A police chief, a marine biologist and a professional shark hunter persue a man-eating great white shark that attack beachgoers at a summer resort town",
     "1975",
-    false
+    false,
+    9
 );
 
 addMovie(movie9);
@@ -118,7 +128,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     // Create card
     let card = document.createElement('div');
     card.setAttribute('class', 'card');
-    card.setAttribute('id', `${i}`);
+    card.setAttribute('id', `${filmLibrary[i]['id']}`)
 
     // Create elements
     let movieTitle = document.createElement('div');
@@ -135,11 +145,7 @@ for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     movieButtons.setAttribute('class', 'movie-buttons');
 
     let seenBtn = document.createElement('img');
-    // seenBtn.classList.add('btn', 'seen');
-    // seenBtn.src = 'static/seen.png';
-    // let unseenBtn = document.createElement('img');
-    // unseenBtn.classList.add('btn', 'unseen');
-    // unseenBtn.src = 'static/unseen.png';
+
     let editBtn = document.createElement('img');
     editBtn.classList.add('btn', 'edit');
     editBtn.src = 'static/edit.png';
@@ -204,7 +210,6 @@ function addMovieToList(event) {
         newMovie[element] = movieEntries[index]});
     addMovie(newMovie);
 
-    
 }
 
 
@@ -224,24 +229,22 @@ let toggleSeen = function(element, class0, class1) {
 
 seenButtons.forEach((button) => {
     button.addEventListener('click', function() {
-        let index = this.closest('.card').id;
-        let movie = document.getElementById(index);
-        if (filmLibrary[index]['seen'] === true) {
-            filmLibrary[index]['seen'] = false;
+        let id = Number(this.closest('.card').id);
+        let movie = document.getElementById(id);
+        let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+        if (filmLibrary[entry]['seen'] === true) {
+            filmLibrary[entry]['seen'] = false;
             toggleSeen(movie, 'seen', 'unseen');
             button.src = 'static/seen.png';
             unseenBoard.appendChild(movie);
         }
-        else if (filmLibrary[index]['seen'] === false) {
-            filmLibrary[index]['seen'] = true;
+        else if (filmLibrary[entry]['seen'] === false) {
+            filmLibrary[entry]['seen'] = true;
             toggleSeen(movie, 'seen', 'unseen');
             button.src = 'static/unseen.png';
             seenBoard.appendChild(movie);
-        }
-        console.log(filmLibrary[index]['title'])
-        console.log(index);
-        console.log(filmLibrary[index]['seen'])
-    })
+        };
+    });
 })
 
 deleteButtons.forEach((button) => {
@@ -250,9 +253,6 @@ deleteButtons.forEach((button) => {
         let movie = document.getElementById(index);
         let board = this.closest('.cards');
         filmLibrary.splice(index, 1);
-        for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
-            cards[i+1].setAttribute('id', `${Object.keys(filmLibrary)[i]}`);
-        };
         board.removeChild(movie);
     })
 })
