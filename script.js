@@ -327,6 +327,22 @@ deleteButtons.forEach((button) => {
 
 saveMovie.addEventListener('submit', addMovieToList);
 
+editButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+        let id = Number(this.closest('.card').id);
+        let movie = document.getElementById(id);
+        let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+
+        modal.style.display = 'block';
+
+        // Add content
+        document.getElementById('movie-title').textContent = `${filmLibrary[entry]['title']}`;
+        document.getElementById('movie-genre').textContent = `${filmLibrary[entry]['genre']}`;
+        document.getElementById('movie-year').textContent = `${filmLibrary[entry]['year']}`;
+        document.getElementById('movie-description').textContent = `${filmLibrary[entry]['description']}`;
+    });
+})
+
 // Define modal window
 
 const modal = document.getElementById('movieForm');
