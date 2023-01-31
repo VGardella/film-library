@@ -4,7 +4,6 @@ const unseenBoard = document.getElementById('unseen-board');
 
 function addMovie(object) {
     filmLibrary.push(object);
-
 }
 
 //  Constructor
@@ -271,6 +270,12 @@ function addMovieToList(event) {
         
         unseenBoard.appendChild(card);
     }
+    modal.style.display = 'none';
+
+    seenButtons = document.querySelectorAll('.seen-btn');
+    editButtons = document.querySelectorAll('.btn.edit');
+    deleteButtons = document.querySelectorAll('.btn.delete');
+    cards = document.querySelectorAll('.card');
 };
 
 
@@ -291,16 +296,17 @@ let toggleSeen = function(element, class0, class1) {
 seenButtons.forEach((button) => {
     button.addEventListener('click', function() {
         let id = Number(this.closest('.card').id);
+        console.log(id)
         let movie = document.getElementById(id);
         let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-        if (filmLibrary[entry]['seen'] === true) {
-            filmLibrary[entry]['seen'] = false;
+        if (filmLibrary[entry]['seen'] === 'true') {
+            filmLibrary[entry]['seen'] = 'false';
             toggleSeen(movie, 'seen', 'unseen');
             button.src = 'static/seen.png';
             unseenBoard.appendChild(movie);
         }
-        else if (filmLibrary[entry]['seen'] === false) {
-            filmLibrary[entry]['seen'] = true;
+        else if (filmLibrary[entry]['seen'] === 'false') {
+            filmLibrary[entry]['seen'] = 'true';
             toggleSeen(movie, 'seen', 'unseen');
             button.src = 'static/unseen.png';
             seenBoard.appendChild(movie);
@@ -318,7 +324,6 @@ deleteButtons.forEach((button) => {
         board.removeChild(movie);
     })
 })
-
 
 saveMovie.addEventListener('submit', addMovieToList);
 
