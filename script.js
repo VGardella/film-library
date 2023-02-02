@@ -1,11 +1,3 @@
-let filmLibrary = [];
-const seenBoard = document.getElementById('seen-board');
-const unseenBoard = document.getElementById('unseen-board');
-
-function addMovie(object) {
-    filmLibrary.push(object);
-}
-
 //  Constructor
 
 function Movie(title, genre, description, year, seen, id) {
@@ -28,8 +20,6 @@ let movie1 = new Movie(
     1
 );
 
-addMovie(movie1);
-
 let movie2 = new Movie(
     "Big Trouble in Little China",
     "Fantasy, Action, Comedy",
@@ -38,8 +28,6 @@ let movie2 = new Movie(
     "true",
     2
 );
-
-addMovie(movie2);
 
 let movie3 = new Movie(
     "The Evil Dead",
@@ -50,8 +38,6 @@ let movie3 = new Movie(
     3
 );
 
-addMovie(movie3);
-
 let movie4 = new Movie(
     "Demolition Man",
     "Science Fiction, Action",
@@ -60,8 +46,6 @@ let movie4 = new Movie(
     "true",
     4
 );
-
-addMovie(movie4);
 
 let movie5 = new Movie(
     "Dredd",
@@ -72,8 +56,6 @@ let movie5 = new Movie(
     5
 );
 
-addMovie(movie5);
-
 let movie6 = new Movie(
     "The Running Man",
     "Action",
@@ -82,8 +64,6 @@ let movie6 = new Movie(
     "true",
     6
 );
-
-addMovie(movie6);
   
 // To be seen
 
@@ -96,8 +76,6 @@ let movie7 = new Movie(
     7
 );
 
-addMovie(movie7);
-
 let movie8 = new Movie(
     "Tron",
     "Science Fiction, Action, Adventure",
@@ -106,8 +84,6 @@ let movie8 = new Movie(
     "false",
     8
 );
-
-addMovie(movie8);
 
 let movie9 = new Movie(
     "Jaws",
@@ -118,7 +94,14 @@ let movie9 = new Movie(
     9
 );
 
-addMovie(movie9);
+
+let filmLibrary = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9];
+const seenBoard = document.getElementById('seen-board');
+const unseenBoard = document.getElementById('unseen-board');
+
+function addMovie(object) {
+    filmLibrary.push(object);
+}
 
 // Create cards
 
