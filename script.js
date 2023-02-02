@@ -286,7 +286,6 @@ let editButtons = document.querySelectorAll('.btn.edit');
 let deleteButtons = document.querySelectorAll('.btn.delete');
 let cards = document.querySelectorAll('.card');
 let saveMovie = document.getElementById('form');
-let inputList = document.querySelectorAll('input');
 
 let toggleSeen = function(element, class0, class1) {
     element.classList.toggle(class0);
@@ -330,16 +329,37 @@ saveMovie.addEventListener('submit', addMovieToList);
 editButtons.forEach((button) => {
     button.addEventListener('click', function() {
         let id = Number(this.closest('.card').id);
-        let movie = document.getElementById(id);
         let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+        let editMovie = filmLibrary[entry];
 
         modal.style.display = 'block';
 
-        // Add content
-        document.getElementById('movie-title').textContent = `${filmLibrary[entry]['title']}`;
-        document.getElementById('movie-genre').textContent = `${filmLibrary[entry]['genre']}`;
-        document.getElementById('movie-year').textContent = `${filmLibrary[entry]['year']}`;
-        document.getElementById('movie-description').textContent = `${filmLibrary[entry]['description']}`;
+        // Get content
+        document.getElementById('entry-title').value = `${editMovie.title}`;
+        document.getElementById('entry-genre').value = `${editMovie.genre}`;
+        document.getElementById('entry-year').value = `${editMovie.year}`;
+        document.getElementById('entry-description').value = `${editMovie.description}`;
+        if (editMovie.seen === 'true') {
+            document.getElementById('seen-radio').checked = true;
+        }
+        else if (editMovie.seen === 'false') {
+            document.getElementById('unseen-radio').checked = true;
+        }
+
+        // Save new values
+        saveMovie.addEventListener('click', function() {
+            editMovie.title = document.getElementById('entry-title').value;
+            editMovie.genre = document.getElementById('entry-genre').value;
+            editMovie.year = document.getElementById('entry-year').value;
+            editMovie.description = document.getElementById('entry-description').value;
+
+            if (document.getElementById('seen-radio').checked) {
+                editMovie.seen === 'true';
+            }
+            else if (document.getElementById('unseen-radio').checked) {
+                editMovie.seen === 'false';
+            }
+        });
     });
 })
 
