@@ -76,7 +76,7 @@ const editMovie = function() {
     let id = Number(this.closest('.card').id);
     let movie = document.getElementById(id);
     let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-    let editMovie = filmLibrary[entry];
+    let board = this.closest('.cards');
 
     modal.style.display = 'block';
 
@@ -86,38 +86,42 @@ const editMovie = function() {
     let year = document.getElementById('entry-year');
     let desc = document.getElementById('entry-description');
 
-    title.value = `${editMovie.title}`;
-    genre.value = `${editMovie.genre}`;
-    year.value = `${editMovie.year}`;
-    desc.value = `${editMovie.description}`;
+    title.value = `${filmLibrary[entry]['title']}`;
+    genre.value = `${filmLibrary[entry]['genre']}`;
+    year.value = `${filmLibrary[entry]['year']}`;
+    desc.value = `${filmLibrary[entry]['description']}`;
 
-    if (editMovie.seen === 'true') {
+    if (filmLibrary[entry]['seen'] === 'true') {
         document.getElementById('seen-radio').checked = true;
     }
-    else if (editMovie.seen === 'false') {
+    else if (filmLibrary[entry]['seen'] === 'false') {
         document.getElementById('unseen-radio').checked = true;
     }
 
     // Save new values
     saveMovie.addEventListener('click', function() {
-        editMovie.title = title.value;
-        editMovie.genre = genre.value;
-        editMovie.year = year.value;
-        editMovie.description = desc.value;
+        filmLibrary[entry]['title'] = title.value;
+        filmLibrary[entry]['genre'] = genre.value;
+        filmLibrary[entry]['year'] = year.value;
+        filmLibrary[entry]['description'] = desc.value;
 
         if (document.getElementById('seen-radio').checked) {
-            editMovie.seen === 'true';
+            filmLibrary[entry]['seen'] === 'true';
         }
         else if (document.getElementById('unseen-radio').checked) {
-            editMovie.seen === 'false';
+            filmLibrary[entry]['seen'] === 'false';
         }
+
+        // Delete old card
+        filmLibrary.splice(entry, 1);
+        board.removeChild(movie);
     });
 
-    // Delete old card
-    let board = this.closest('.cards');
-    filmLibrary.splice(entry, 1);
-    board.removeChild(movie);
+    // Cancel editting
+    // let cancelBtn = document.getElementById('close-btn');
+    // cancelBtn.addEventListener('click', function() {
 
+    // });
 }
 
 // Create cards
