@@ -67,118 +67,117 @@ const deleteMovie = function() {
     board.removeChild(movie);
 };
 
-const editMovie = function() {
-    let id = Number(this.closest('.card').id);
-    let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-    let editMovie = filmLibrary[entry];
+// const editMovie = function() {
+//     let id = Number(this.closest('.card').id);
+//     let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+//     let editMovie = filmLibrary[entry];
 
-    modal.style.display = 'block';
+//     modal.style.display = 'block';
 
-    // Get content
-    document.getElementById('entry-title').value = `${editMovie.title}`;
-    document.getElementById('entry-genre').value = `${editMovie.genre}`;
-    document.getElementById('entry-year').value = `${editMovie.year}`;
-    document.getElementById('entry-description').value = `${editMovie.description}`;
-    if (editMovie.seen === 'true') {
-        document.getElementById('seen-radio').checked = true;
-    }
-    else if (editMovie.seen === 'false') {
-        document.getElementById('unseen-radio').checked = true;
-    }
+//     // Get content
+//     document.getElementById('entry-title').value = `${editMovie.title}`;
+//     document.getElementById('entry-genre').value = `${editMovie.genre}`;
+//     document.getElementById('entry-year').value = `${editMovie.year}`;
+//     document.getElementById('entry-description').value = `${editMovie.description}`;
+//     if (editMovie.seen === 'true') {
+//         document.getElementById('seen-radio').checked = true;
+//     }
+//     else if (editMovie.seen === 'false') {
+//         document.getElementById('unseen-radio').checked = true;
+//     }
 
-    // Save new values
-    saveMovie.addEventListener('click', function() {
-        editMovie.title = document.getElementById('entry-title').value;
-        editMovie.genre = document.getElementById('entry-genre').value;
-        editMovie.year = document.getElementById('entry-year').value;
-        editMovie.description = document.getElementById('entry-description').value;
+//     // Save new values
+//     saveMovie.addEventListener('click', function() {
+//         editMovie.title = document.getElementById('entry-title').value;
+//         editMovie.genre = document.getElementById('entry-genre').value;
+//         editMovie.year = document.getElementById('entry-year').value;
+//         editMovie.description = document.getElementById('entry-description').value;
 
-        if (document.getElementById('seen-radio').checked) {
-            editMovie.seen === 'true';
-        }
-        else if (document.getElementById('unseen-radio').checked) {
-            editMovie.seen === 'false';
-        }
-    });
-}
+//         if (document.getElementById('seen-radio').checked) {
+//             editMovie.seen === 'true';
+//         }
+//         else if (document.getElementById('unseen-radio').checked) {
+//             editMovie.seen === 'false';
+//         }
+//     });
+// }
 
 // Create cards
 
-let addMovieCard = function() {
-    for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
+let addMovieCard = function(library) {
     
-        // Create card
-        let card = document.createElement('div');
-        card.setAttribute('class', 'card');
-        card.setAttribute('id', `${filmLibrary[i]['id']}`)
-    
-        // Create elements
-        let movieTitle = document.createElement('div');
-        movieTitle.setAttribute('class', 'movie-title');
-        let movieData = document.createElement('div');
-        movieData.setAttribute('class', 'movie-data');
-        let movieGenre = document.createElement('div');
-        movieGenre.setAttribute('class', 'movie-genre');
-        let movieYear = document.createElement('div');
-        movieYear.setAttribute('class', 'movie-year');
-        let movieDesc = document.createElement('div');
-        movieDesc.setAttribute('class', 'movie-desc');
-        let movieButtons = document.createElement('div');
-        movieButtons.setAttribute('class', 'movie-buttons');
-    
-        let seenBtn = document.createElement('img');
-    
-        let editBtn = document.createElement('img');
-        editBtn.classList.add('btn', 'edit');
-        editBtn.src = 'static/edit.png';
-        let deleteBtn = document.createElement('img');
-        deleteBtn.classList.add('btn', 'delete');
-        deleteBtn.src = 'static/delete.png';
-    
-        // Add content
-        movieTitle.textContent = `${filmLibrary[i]['title']}`;
-        movieGenre.textContent = `${filmLibrary[i]['genre']}`;
-        movieYear.textContent = `${filmLibrary[i]['year']}`;
-        movieDesc.textContent = `${filmLibrary[i]['description']}`;
-    
-        // Append containers
-        card.appendChild(movieTitle);
-        card.appendChild(movieData);
-        card.appendChild(movieDesc);
-        card.appendChild(movieButtons);
-    
-        movieData.appendChild(movieGenre);
-        movieData.appendChild(movieYear);
-    
-        movieButtons.appendChild(editBtn);
-        movieButtons.appendChild(deleteBtn);
-    
-        // Append to board
-        if (filmLibrary[i]['seen'] === 'true') {
-            card.classList.add('seen');
-    
-            seenBtn.src = 'static/unseen.png';
-            seenBtn.classList.add('btn', 'seen-btn', 'seen');
-            movieButtons.appendChild(seenBtn);
-            
-            seenBoard.appendChild(card);
-        }
-        else if (filmLibrary[i]['seen'] === 'false') {
-            card.classList.add('unseen');
-            
-            seenBtn.src = 'static/seen.png';
-            seenBtn.classList.add('btn', 'seen-btn', 'unseen');
-            movieButtons.appendChild(seenBtn);
-            
-            unseenBoard.appendChild(card);
-        };
+    // Create card
+    let card = document.createElement('div');
+    card.setAttribute('class', 'card');
+    card.setAttribute('id', `${library['id']}`)
 
-        // Add event Listeners
-        seenBtn.addEventListener('click', seenMovie);
-        deleteBtn.addEventListener('click', deleteMovie);
-        // editBtn.addEventListener('click', editMovie());
+    // Create elements
+    let movieTitle = document.createElement('div');
+    movieTitle.setAttribute('class', 'movie-title');
+    let movieData = document.createElement('div');
+    movieData.setAttribute('class', 'movie-data');
+    let movieGenre = document.createElement('div');
+    movieGenre.setAttribute('class', 'movie-genre');
+    let movieYear = document.createElement('div');
+    movieYear.setAttribute('class', 'movie-year');
+    let movieDesc = document.createElement('div');
+    movieDesc.setAttribute('class', 'movie-desc');
+    let movieButtons = document.createElement('div');
+    movieButtons.setAttribute('class', 'movie-buttons');
+
+    let seenBtn = document.createElement('img');
+
+    let editBtn = document.createElement('img');
+    editBtn.classList.add('btn', 'edit');
+    editBtn.src = 'static/edit.png';
+    let deleteBtn = document.createElement('img');
+    deleteBtn.classList.add('btn', 'delete');
+    deleteBtn.src = 'static/delete.png';
+
+    // Add content
+    movieTitle.textContent = `${library['title']}`;
+    movieGenre.textContent = `${library['genre']}`;
+    movieYear.textContent = `${library['year']}`;
+    movieDesc.textContent = `${library['description']}`;
+
+    // Append containers
+    card.appendChild(movieTitle);
+    card.appendChild(movieData);
+    card.appendChild(movieDesc);
+    card.appendChild(movieButtons);
+
+    movieData.appendChild(movieGenre);
+    movieData.appendChild(movieYear);
+
+    movieButtons.appendChild(editBtn);
+    movieButtons.appendChild(deleteBtn);
+
+    // Append to board
+    if (library['seen'] === 'true') {
+        card.classList.add('seen');
+
+        seenBtn.src = 'static/unseen.png';
+        seenBtn.classList.add('btn', 'seen-btn', 'seen');
+        movieButtons.appendChild(seenBtn);
+        
+        seenBoard.appendChild(card);
+    }
+    else if (library['seen'] === 'false') {
+        card.classList.add('unseen');
+        
+        seenBtn.src = 'static/seen.png';
+        seenBtn.classList.add('btn', 'seen-btn', 'unseen');
+        movieButtons.appendChild(seenBtn);
+        
+        unseenBoard.appendChild(card);
     };
-}
+
+    // Add event Listeners
+    seenBtn.addEventListener('click', seenMovie);
+    deleteBtn.addEventListener('click', deleteMovie);
+    // editBtn.addEventListener('click', editMovie());
+};
+
 
 
 function addMovieToList(event) {
@@ -193,9 +192,8 @@ function addMovieToList(event) {
         newMovie[element] = movieEntries[index]});
     
     addMovie(newMovie);
-    console.log(filmLibrary);
 
-    addMovieCard();
+    addMovieCard(newMovie);
 
     modal.style.display = 'none';
 
@@ -233,4 +231,6 @@ closeBtn.onclick = function() {
 
 // Call funcion
 
-addMovieCard();
+for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
+    addMovieCard(filmLibrary[i]);
+};
