@@ -38,9 +38,73 @@ function addMovie(object) {
     filmLibrary.push(object);
 }
 
+// Functions
+
+const seenMovie = function(button) {
+    let id = Number(this.closest('.card').id);
+    let movie = document.getElementById(id);
+    let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+    if (filmLibrary[entry]['seen'] === 'true') {
+        filmLibrary[entry]['seen'] = 'false';
+        toggleSeen(movie, 'seen', 'unseen');
+        button.src = 'static/seen.png';
+        unseenBoard.appendChild(movie);
+    }
+    else if (filmLibrary[entry]['seen'] === 'false') {
+        filmLibrary[entry]['seen'] = 'true';
+        toggleSeen(movie, 'seen', 'unseen');
+        button.src = 'static/unseen.png';
+        seenBoard.appendChild(movie);
+    };
+};
+
+const deleteMovie = function() {
+    let id = Number(this.closest('.card').id);
+    let movie = document.getElementById(id);
+    let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+    let board = this.closest('.cards');
+    filmLibrary.splice(entry, 1);
+    board.removeChild(movie);
+};
+
+const editMovie = function() {
+    let id = Number(this.closest('.card').id);
+    let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+    let editMovie = filmLibrary[entry];
+
+    modal.style.display = 'block';
+
+    // Get content
+    document.getElementById('entry-title').value = `${editMovie.title}`;
+    document.getElementById('entry-genre').value = `${editMovie.genre}`;
+    document.getElementById('entry-year').value = `${editMovie.year}`;
+    document.getElementById('entry-description').value = `${editMovie.description}`;
+    if (editMovie.seen === 'true') {
+        document.getElementById('seen-radio').checked = true;
+    }
+    else if (editMovie.seen === 'false') {
+        document.getElementById('unseen-radio').checked = true;
+    }
+
+    // Save new values
+    saveMovie.addEventListener('click', function() {
+        editMovie.title = document.getElementById('entry-title').value;
+        editMovie.genre = document.getElementById('entry-genre').value;
+        editMovie.year = document.getElementById('entry-year').value;
+        editMovie.description = document.getElementById('entry-description').value;
+
+        if (document.getElementById('seen-radio').checked) {
+            editMovie.seen === 'true';
+        }
+        else if (document.getElementById('unseen-radio').checked) {
+            editMovie.seen === 'false';
+        }
+    });
+}
+
 // Create cards
 
-let addMovie = function() {
+let addMovieCard = function() {
     for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     
         // Create card
@@ -107,7 +171,12 @@ let addMovie = function() {
             movieButtons.appendChild(seenBtn);
             
             unseenBoard.appendChild(card);
-        }
+        };
+
+        // Add event Listeners
+        seenBtn.addEventListener('click', seenMovie);
+        deleteBtn.addEventListener('click', deleteMovie);
+        // editBtn.addEventListener('click', editMovie());
     };
 }
 
@@ -124,7 +193,7 @@ function addMovieToList(event) {
         newMovie[element] = movieEntries[index]});
     
     addMovie(newMovie);
-    alert('Movie entry added correctly!')
+    console.log(filmLibrary);
 
     // Create card
     let card = document.createElement('div');
@@ -193,10 +262,15 @@ function addMovieToList(event) {
     }
     modal.style.display = 'none';
 
-    seenButtons = document.querySelectorAll('.seen-btn');
-    editButtons = document.querySelectorAll('.btn.edit');
-    deleteButtons = document.querySelectorAll('.btn.delete');
-    cards = document.querySelectorAll('.card');
+    // Add event Listeners
+    seenBtn.addEventListener('click', seenMovie);
+    deleteBtn.addEventListener('click', deleteMovie);
+    // editBtn.addEventListener('click', editMovie());
+
+    alert('Movie entry added correctly!')
+
+    modal.style.display = 'none';
+
 };
 
 
@@ -213,76 +287,7 @@ let toggleSeen = function(element, class0, class1) {
     element.classList.toggle(class1);
 }
 
-seenButtons.forEach((button) => {
-    button.addEventListener('click', function() {
-        let id = Number(this.closest('.card').id);
-        console.log(id)
-        let movie = document.getElementById(id);
-        let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-        if (filmLibrary[entry]['seen'] === 'true') {
-            filmLibrary[entry]['seen'] = 'false';
-            toggleSeen(movie, 'seen', 'unseen');
-            button.src = 'static/seen.png';
-            unseenBoard.appendChild(movie);
-        }
-        else if (filmLibrary[entry]['seen'] === 'false') {
-            filmLibrary[entry]['seen'] = 'true';
-            toggleSeen(movie, 'seen', 'unseen');
-            button.src = 'static/unseen.png';
-            seenBoard.appendChild(movie);
-        };
-    });
-})
-
-deleteButtons.forEach((button) => {
-    button.addEventListener('click', function() {
-        let id = Number(this.closest('.card').id);
-        let movie = document.getElementById(id);
-        let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-        let board = this.closest('.cards');
-        filmLibrary.splice(entry, 1);
-        board.removeChild(movie);
-    })
-})
-
 saveMovie.addEventListener('submit', addMovieToList);
-
-editButtons.forEach((button) => {
-    button.addEventListener('click', function() {
-        let id = Number(this.closest('.card').id);
-        let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-        let editMovie = filmLibrary[entry];
-
-        modal.style.display = 'block';
-
-        // Get content
-        document.getElementById('entry-title').value = `${editMovie.title}`;
-        document.getElementById('entry-genre').value = `${editMovie.genre}`;
-        document.getElementById('entry-year').value = `${editMovie.year}`;
-        document.getElementById('entry-description').value = `${editMovie.description}`;
-        if (editMovie.seen === 'true') {
-            document.getElementById('seen-radio').checked = true;
-        }
-        else if (editMovie.seen === 'false') {
-            document.getElementById('unseen-radio').checked = true;
-        }
-
-        // Save new values
-        saveMovie.addEventListener('click', function() {
-            editMovie.title = document.getElementById('entry-title').value;
-            editMovie.genre = document.getElementById('entry-genre').value;
-            editMovie.year = document.getElementById('entry-year').value;
-            editMovie.description = document.getElementById('entry-description').value;
-
-            if (document.getElementById('seen-radio').checked) {
-                editMovie.seen === 'true';
-            }
-            else if (document.getElementById('unseen-radio').checked) {
-                editMovie.seen === 'false';
-            }
-        });
-    });
-})
 
 // Define modal window
 
@@ -297,3 +302,7 @@ openBtn.onclick = function() {
 closeBtn.onclick = function() {
     modal.style.display = 'none';
 }
+
+// Call funcion
+
+addMovieCard();
