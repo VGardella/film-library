@@ -72,40 +72,53 @@ const deleteMovie = function() {
     board.removeChild(movie);
 };
 
-// const editMovie = function() {
-//     let id = Number(this.closest('.card').id);
-//     let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
-//     let editMovie = filmLibrary[entry];
+const editMovie = function() {
+    let id = Number(this.closest('.card').id);
+    let movie = document.getElementById(id);
+    let entry = Object.keys(filmLibrary).find(key => filmLibrary[key].id === id);
+    let editMovie = filmLibrary[entry];
 
-//     modal.style.display = 'block';
+    modal.style.display = 'block';
 
-//     // Get content
-//     document.getElementById('entry-title').value = `${editMovie.title}`;
-//     document.getElementById('entry-genre').value = `${editMovie.genre}`;
-//     document.getElementById('entry-year').value = `${editMovie.year}`;
-//     document.getElementById('entry-description').value = `${editMovie.description}`;
-//     if (editMovie.seen === 'true') {
-//         document.getElementById('seen-radio').checked = true;
-//     }
-//     else if (editMovie.seen === 'false') {
-//         document.getElementById('unseen-radio').checked = true;
-//     }
+    // Get content
+    let title = document.getElementById('entry-title');
+    let genre = document.getElementById('entry-genre');
+    let year = document.getElementById('entry-year');
+    let desc = document.getElementById('entry-description');
 
-//     // Save new values
-//     saveMovie.addEventListener('click', function() {
-//         editMovie.title = document.getElementById('entry-title').value;
-//         editMovie.genre = document.getElementById('entry-genre').value;
-//         editMovie.year = document.getElementById('entry-year').value;
-//         editMovie.description = document.getElementById('entry-description').value;
+    title.value = `${editMovie.title}`;
+    genre.value = `${editMovie.genre}`;
+    year.value = `${editMovie.year}`;
+    desc.value = `${editMovie.description}`;
 
-//         if (document.getElementById('seen-radio').checked) {
-//             editMovie.seen === 'true';
-//         }
-//         else if (document.getElementById('unseen-radio').checked) {
-//             editMovie.seen === 'false';
-//         }
-//     });
-// }
+    if (editMovie.seen === 'true') {
+        document.getElementById('seen-radio').checked = true;
+    }
+    else if (editMovie.seen === 'false') {
+        document.getElementById('unseen-radio').checked = true;
+    }
+
+    // Save new values
+    saveMovie.addEventListener('click', function() {
+        editMovie.title = title.value;
+        editMovie.genre = genre.value;
+        editMovie.year = year.value;
+        editMovie.description = desc.value;
+
+        if (document.getElementById('seen-radio').checked) {
+            editMovie.seen === 'true';
+        }
+        else if (document.getElementById('unseen-radio').checked) {
+            editMovie.seen === 'false';
+        }
+    });
+
+    // Delete old card
+    let board = this.closest('.cards');
+    filmLibrary.splice(entry, 1);
+    board.removeChild(movie);
+
+}
 
 // Create cards
 
@@ -180,7 +193,7 @@ let addMovieCard = function(library) {
     // Add event Listeners
     seenBtn.addEventListener('click', seenMovie);
     deleteBtn.addEventListener('click', deleteMovie);
-    // editBtn.addEventListener('click', editMovie());
+    editBtn.addEventListener('click', editMovie);
 };
 
 
