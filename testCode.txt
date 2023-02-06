@@ -1,0 +1,23 @@
+    saveMovie.removeEventListener('submit', addMovieToList);
+    saveMovie.addEventListener('click', function(event) {
+        event.preventDefault();
+        filmLibrary[entry]['title'] = title.value;
+        filmLibrary[entry]['genre'] = genre.value;
+        filmLibrary[entry]['year'] = year.value;
+        filmLibrary[entry]['description'] = desc.value;
+
+        if (document.getElementById('seen-radio').checked) {
+            filmLibrary[entry]['seen'] === 'true';
+        }
+        else if (document.getElementById('unseen-radio').checked) {
+            filmLibrary[entry]['seen'] === 'false';
+        }
+
+        movie.querySelector('.movie-title').textContent = filmLibrary[entry]['title'];
+        movie.querySelector('.movie-data').querySelector('.movie-genre').textContent = filmLibrary[entry]['genre'];
+        movie.querySelector('.movie-data').querySelector('.movie-year').textContent = filmLibrary[entry]['year'];
+        movie.querySelector('.movie-desc').textContent = filmLibrary[entry]['description'];
+
+        document.getElementById('form').reset();
+
+        modal.style.display = 'none';
