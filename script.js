@@ -98,30 +98,12 @@ const editMovie = function() {
         document.getElementById('unseen-radio').checked = true;
     }
 
-    // Save new values
-    saveMovie.addEventListener('click', function() {
-        filmLibrary[entry]['title'] = title.value;
-        filmLibrary[entry]['genre'] = genre.value;
-        filmLibrary[entry]['year'] = year.value;
-        filmLibrary[entry]['description'] = desc.value;
-
-        if (document.getElementById('seen-radio').checked) {
-            filmLibrary[entry]['seen'] === 'true';
-        }
-        else if (document.getElementById('unseen-radio').checked) {
-            filmLibrary[entry]['seen'] === 'false';
-        }
-
-        // Delete old card
-        filmLibrary.splice(entry, 1);
+    // Delete old card
+    saveMovie.addEventListener('submit', function() {
         board.removeChild(movie);
+        filmLibrary.splice(entry, 1);
     });
-
-    // Cancel editting
-    // let cancelBtn = document.getElementById('close-btn');
-    // cancelBtn.addEventListener('click', function() {
-
-    // });
+    
 }
 
 // Create cards
