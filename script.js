@@ -9,6 +9,13 @@ function Movie(title, genre, description, year, seen, id) {
     this.id = id;
   }
 
+
+// Queries
+
+const seenBoard = document.getElementById('seen-board');
+const unseenBoard = document.getElementById('unseen-board');
+
+
 // Entries
 
 let filmLibrary = [
@@ -31,12 +38,6 @@ let filmLibrary = [
     new Movie("Jaws", "Thriller", "A police chief, a marine biologist and a professional shark hunter persue a man-eating great white shark that attack beachgoers at a summer resort town",
 "1975", "false", 9)]
 
-const seenBoard = document.getElementById('seen-board');
-const unseenBoard = document.getElementById('unseen-board');
-
-function addMovie(object) {
-    filmLibrary.push(object);
-}
 
 // Functions
 
@@ -103,10 +104,10 @@ const editMovie = function() {
         board.removeChild(movie);
         filmLibrary.splice(entry, 1);
     });
-    
 }
 
-// Create cards
+
+// Create cards and add movies
 
 let addMovieCard = function(library) {
     
@@ -182,6 +183,9 @@ let addMovieCard = function(library) {
     editBtn.addEventListener('click', editMovie);
 };
 
+function addMovie(object) {
+    filmLibrary.push(object);
+}
 
 function addMovieToList(event) {
     event.preventDefault();
@@ -198,11 +202,10 @@ function addMovieToList(event) {
     addMovieCard(newMovie);
 
     modal.style.display = 'none';
-
 };
 
 
-// Event Listeners
+// Event Listener
 
 let saveMovie = document.getElementById('form');
 saveMovie.addEventListener('submit', addMovieToList);
@@ -221,7 +224,7 @@ closeBtn.onclick = function() {
     modal.style.display = 'none';
 }
 
-// Call funcion
+// Call function
 
 for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     addMovieCard(filmLibrary[i]);
