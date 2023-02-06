@@ -40,6 +40,11 @@ function addMovie(object) {
 
 // Functions
 
+let toggleSeen = function(element, class0, class1) {
+    element.classList.toggle(class0);
+    element.classList.toggle(class1);
+}
+
 const seenMovie = function(button) {
     let id = Number(this.closest('.card').id);
     let movie = document.getElementById(id);
@@ -179,7 +184,6 @@ let addMovieCard = function(library) {
 };
 
 
-
 function addMovieToList(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -192,7 +196,6 @@ function addMovieToList(event) {
         newMovie[element] = movieEntries[index]});
     
     addMovie(newMovie);
-
     addMovieCard(newMovie);
 
     modal.style.display = 'none';
@@ -202,17 +205,7 @@ function addMovieToList(event) {
 
 // Event Listeners
 
-let seenButtons = document.querySelectorAll('.seen-btn');
-let editButtons = document.querySelectorAll('.btn.edit');
-let deleteButtons = document.querySelectorAll('.btn.delete');
-let cards = document.querySelectorAll('.card');
 let saveMovie = document.getElementById('form');
-
-let toggleSeen = function(element, class0, class1) {
-    element.classList.toggle(class0);
-    element.classList.toggle(class1);
-}
-
 saveMovie.addEventListener('submit', addMovieToList);
 
 // Define modal window
