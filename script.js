@@ -229,3 +229,26 @@ closeBtn.onclick = function() {
 for (let i = 0; i < Object.keys(filmLibrary).length; i++) {
     addMovieCard(filmLibrary[i]);
 };
+
+// Form Validation
+
+const formFields = document.querySelectorAll('.input-field');
+const formYear = document.getElementById('entry-year');
+
+formFields.forEach((form) => {
+    form.addEventListener('input', (event) => {
+        if (form.validity.tooShort) {
+            form.setCustomValidity('You need to write at least 1 character!');
+        } else {
+            form.setCustomValidity('');
+        }
+    })
+});
+
+formYear.addEventListener('input', () => {
+    if (formYear.validity.rangeUnderflow) {
+        formYear.setCustomValidity(`The first movie was created in 1878, to this can\'t be possible. Check the release year!`);
+    } else {
+        formYear.setCustomValidity('');
+    }
+})
